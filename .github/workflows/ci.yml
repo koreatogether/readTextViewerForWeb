@@ -40,6 +40,3 @@ jobs:
 
       - name: Syntax check root JS
         run: node --check main.js
-
-      - name: Syntax check archived JS
-        run: node --check forWebView_03/main.js

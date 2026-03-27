@@ -6,7 +6,6 @@
 
 - `index.html`, `main.js`, `style-enhanced.css`, `style.css` : 실행용 v3 루트 파일
 - `archives/v02/` : v02 아카이브
-- `forWebView_03/` : v3 작업본 보관용 폴더
 
 ## 주요 기능
 
@@ -21,7 +20,7 @@
 - GitHub Actions `CI` workflow가 push / pull request마다 실행됩니다.
 - `scripts/security-scan.js`가 비밀정보, API 키, 이메일, 전화번호, 주민등록번호 패턴을 검사합니다.
 - `gitleaks`가 추가로 전체 저장소를 스캔합니다.
-- `scripts/validate-site.js`가 루트, `docs/`, `forWebView_03/`의 배포용 파일이 서로 일치하는지 확인합니다.
+- `scripts/validate-site.js`가 루트 배포 파일이 v3 기준인지 확인합니다.
 
 ## 실행
 

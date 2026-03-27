@@ -2,39 +2,15 @@
 
 const fs = require("fs");
 const path = require("path");
-const crypto = require("crypto");
 
 const root = process.cwd();
-const mirroredFiles = ["index.html", "main.js", "style-enhanced.css", "style.css", "sample-test.txt"];
-const mirrorDirs = ["docs", "forWebView_03"];
 let ok = true;
 
-function hashFile(filePath) {
-    return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
-}
-
-for (const file of mirroredFiles) {
+for (const file of ["index.html", "main.js", "style-enhanced.css", "style.css", "sample-test.txt"]) {
     const rootPath = path.join(root, file);
     if (!fs.existsSync(rootPath)) {
         console.error(`Missing root file: ${file}`);
         ok = false;
-        continue;
-    }
-
-    const rootHash = hashFile(rootPath);
-    for (const dir of mirrorDirs) {
-        const mirrorPath = path.join(root, dir, file);
-        if (!fs.existsSync(mirrorPath)) {
-            console.error(`Missing mirrored file: ${dir}/${file}`);
-            ok = false;
-            continue;
-        }
-
-        const mirrorHash = hashFile(mirrorPath);
-        if (rootHash !== mirrorHash) {
-            console.error(`Mismatch: ${file} differs between root and ${dir}/`);
-            ok = false;
-        }
     }
 }
 
@@ -45,4 +21,4 @@ if (!/readTextViewer v3/.test(indexHtml)) {
 }
 
 if (!ok) process.exit(1);
-console.log("Site validation passed: root, docs, and forWebView_03 are aligned.");
+console.log("Site validation passed: root v3 files are present and valid.");
