@@ -1,11 +1,12 @@
 # readTextViewer - WebView v3
 
-`forWebView_03`가 현재 사용 버전입니다.
+이 저장소는 v3를 기준으로 동작합니다. 브라우저에서는 루트 `index.html` 을 바로 열어 사용합니다.
 
 ## 구성
 
-- `forWebView_03/` : 활성 v3 버전
+- `index.html`, `main.js`, `style-enhanced.css`, `style.css` : 실행용 v3 루트 파일
 - `archives/v02/` : v02 아카이브
+- `forWebView_03/` : v3 작업본 보관용 폴더
 
 ## 주요 기능
 
@@ -17,4 +18,4 @@
 
 ## 실행
 
-`forWebView_03/index.html` 을 브라우저에서 열어 사용합니다.
+루트 `index.html` 을 브라우저에서 열어 사용합니다.
