@@ -16,6 +16,13 @@
 - 마지막 읽은 위치 복원
 - 검색, 북마크, 최근 파일
 
+## CI
+
+- GitHub Actions `CI` workflow가 push / pull request마다 실행됩니다.
+- `scripts/security-scan.js`가 비밀정보, API 키, 이메일, 전화번호, 주민등록번호 패턴을 검사합니다.
+- `gitleaks`가 추가로 전체 저장소를 스캔합니다.
+- `scripts/validate-site.js`가 루트, `docs/`, `forWebView_03/`의 배포용 파일이 서로 일치하는지 확인합니다.
+
 ## 실행
 
 루트 `index.html` 을 브라우저에서 열어 사용합니다.

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  security-and-validation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Scan for secrets and sensitive data
+        run: node scripts/security-scan.js
+
+      - name: Scan with Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          args: detect --no-git --source . --redact --exit-code 1
+
+      - name: Validate site mirrors
+        run: node scripts/validate-site.js
+
+      - name: Syntax check root JS
+        run: node --check main.js
+
+      - name: Syntax check archived JS
+        run: node --check forWebView_03/main.js
